@@ -1,0 +1,136 @@
+﻿信息系统与数据库技术练习16答题卡
+
+班级：信管2班     
+姓名：凌胜鹏    
+学号：37     
+
+*注：排除答案放置在序号下方。* /
+
+（一）
+1。
+创建数据库存储
+
+
+2。
+使用存储
+
+
+3。
+创建表产品
+（
+Pid CHAR（4）CONSTRAINT pk_Pid PRIMARY KEY，
+Pname VARCHAR（40），
+规格VARCHAR（40）NOT NULL，
+代码CHAR（15），
+重量小数（16,2），
+价格金额约束ck_Price CHECK（Price> = 0 AND Price <99999），
+价格，
+Cid CHAR（4）
+）
+
+
+
+
+4。
+插入产品（Pid，Pname，Specs，Price，Cid，Code）
+值（'PD02'，'商品2'，'EQ2080'，10000，'CT01'，202006011234567）
+
+
+5，
+插入产品（Pid，Pname，Specs，Price，Cid，Code）
+值（'PD03'，'商品3'，'EQ2081'，123456，'CT02'，202006011234568）
+
+
+6。
+ALTER TABLE产品
+添加约束ck_Weight CHECK（Weight> = 0）
+
+7
+更新产品
+设定重量= 123456
+Pid ='PD02'
+
+8。
+更新产品
+SET重量='-100'
+Pid ='PD02'
+
+9。
+创建表WP
+（
+Pid CHAR（4）约束Fk_wp外键参考产品，
+Cid CHAR（4），
+主键（Wid，Pid），
+注意文字，
+Hazard VARCHAR（16）CONSTRAINT ck_Hazard CHECK（Hazard IN（'爆炸品'，'液化气体'，'易燃液体'，'易燃固体'，'一般物品'））
+）
+
+10。
+插入WP
+值（'WD04'，'PD02'，'NULL'，'易燃液体'）
+
+
+11。
+插入WP
+值（'WD05'，'PD02'，'NULL'，'压缩气体'）
+
+12
+插入WP
+值（'WD06'，'PD12'，'NULL'，'液化气体'）
+
+13
+创建表仓库
+（
+Wid CHAR（4）主键，
+WVARVAR（40），
+面积小数（20,3），
+MaxStock小数（20,3），
+ParentWid CHAR（4）约束Fk_wh_wh外键参考仓库
+）
+
+14。
+插入仓库
+VALUES（WD，'云海仓库'，10000,10000，NULL），
+（'WD04'，'云1＃仓库'，3000,3000，WD），
+（'WD05'，'云2＃仓库'，3200,3200，WD）
+
+
+15
+插入仓库
+值（'WD06'，'云3＃仓库'，2700,2700，'WD0'）
+
+16。
+更改表WP
+添加约束FK_WP_WH外键（宽）参考仓库
+
+
+17。
+删除EP
+哪里Wid ='WD04'
+
+18岁
+ALTER TABLE仓库
+放下约束FK_WP_WH
+
+19
+更改表WP
+添加约束FK_WP_WH外键（宽）参考仓库
+更新级联
+删除级联
+
+20
+EXEC sp_helpdb WP
+选择*从WP
+EXEC sp_helpdb仓库
+选择*从仓库
+
+21
+更新产品
+SET Wid ='WD01'，
+哪里Wid ='WD04'
+
+
+22
+删除仓库
+哪里Wid ='WD01'
+
